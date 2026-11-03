@@ -5,12 +5,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>나나 | 초등 교사 & 수학교육·국어인성 연구자 🚀</title>
+  <!-- 구글 웹폰트 및 아이콘 연결 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Pretendard:wght@300;400;500;600;700;800&family=Gaegu:wght@700&display=swap"
+    rel="stylesheet" />
   <!-- 로컬 직접 열기(file://) 및 라이브 서버 호환 지원 -->
   <link rel="stylesheet" href="./src/style.css" />
 </head>
 
-<body>
-  <!-- 화사하고 밝은 배경 요소 (파스텔 오로라 + 좌표/격자 + 부유 기호) -->
+<!-- 사용자 요청: 밝은 화면 컨셉을 기본 유지 (body.light-theme) + 네온 다크 모드 1클릭 전환 지원 -->
+<body class="light-theme">
+  <!-- 역동적인 배경 요소 (네온 오로라 + 좌표 격자 + 부유 기호) -->
   <div class="background-wrapper" aria-hidden="true">
     <div class="grid-overlay"></div>
     <div class="glow-orb glow-orb-1"></div>
@@ -41,6 +48,12 @@
         <li><a href="#flower-board">10반 꽃 칸</a></li>
         <li><a href="#contact">연락처</a></li>
       </ul>
+
+      <!-- 화면 모드 전환 버튼 (화사한 밝은 화면 ↔ 짙은 네온 다크 글래스모피즘) -->
+      <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="화면 모드 전환">
+        <span id="themeIcon">🌙</span>
+        <span id="themeText">네온 다크</span>
+      </button>
     </nav>
   </header>
 
@@ -48,14 +61,55 @@
     <!-- 1. 첫 화면 (Hero Section) -->
     <section class="hero-section" id="hero">
       <div class="container hero-content">
+        <!-- 🌸 AI 일러스트 여자 교사 사진 (나나 선생님) -->
         <div class="hero-avatar-wrap">
-          <div class="hero-avatar" id="heroAvatar">📐</div>
+          <div class="hero-avatar-frame" id="heroAvatarFrame">
+            <img src="./teacher-avatar.jpg" alt="초등교사이자 융합 연구자 나나 선생님" class="teacher-avatar-img" onerror="this.onerror=null; this.src='/teacher-avatar.jpg';" />
+            <span class="avatar-floating-badge badge-left" id="avatarBadgeLeft">📐</span>
+            <span class="avatar-floating-badge badge-right" id="avatarBadgeRight">🌸</span>
+          </div>
           <span class="hero-badge">초등 교사 & 융합 연구자</span>
         </div>
 
         <h1 class="hero-name">
           안녕하세요, <span class="gradient-text">나나</span>입니다! ✨
         </h1>
+
+        <!-- 📖 디지털 시집 오프닝 북 (Poetic Opening Book) -->
+        <div class="poetry-book-wrapper reveal">
+          <div class="poetry-book">
+            <div class="poetry-book-spine" aria-hidden="true"></div>
+            <div class="poetry-bookmark" aria-hidden="true">🔖</div>
+
+            <!-- 왼쪽 페이지: 대표 문구 및 시적 서문 -->
+            <div class="poetry-page left-page">
+              <span class="poetry-page-label">PROLOGUE · 여는 글</span>
+              <h2 class="poetry-quote-main">
+                “교실에서 질문하고,<br />
+                연구로 가능성을 넓히는 교사”
+              </h2>
+              <div class="poetry-divider"><span>❦</span></div>
+              <p class="poetry-subquote">
+                학생들과 함께 시를 쓰는 마음으로
+              </p>
+            </div>
+
+            <!-- 오른쪽 페이지: 교사의 다짐 및 연구 시선 -->
+            <div class="poetry-page right-page">
+              <span class="poetry-page-label">POETIC RESEARCH · 배움의 결</span>
+              <p class="poetry-verse">
+                수학의 명쾌한 원리 속에<br />
+                아이들의 기발한 질문을 피워내고,<br />
+                명심보감의 깊은 옛 지혜로<br />
+                서로를 아끼는 고운 말을 채웁니다.
+              </p>
+              <div class="poetry-author-sign">
+                <span class="author-label">초등 교사 & 융합 연구자</span>
+                <span class="author-name">나나 올림 ✨</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- 과목 선택 네온 토글 스위처 -->
         <div class="subject-selector-wrapper">
@@ -81,7 +135,7 @@
         <!-- [수학 소개 콘텐츠] -->
         <div class="subject-content-panel active" data-subject="math">
           <p class="hero-quote">
-            “교실에서 질문하고, 연구로 가능성을 넓히는 창의적인 초등교사”
+            “교실에서 질문하고, 연구로 가능성을 넓히는 교사 / 학생들과 함께 시를 쓰는 마음으로”
           </p>
           <p class="hero-bio">
             수학적 사고와 호기심을 바탕으로 학생들이 스스로 생각하고 발견하는 배움의 즐거움을 연구하며 실천하는 창의적인 초등교사 나나입니다.
@@ -91,10 +145,10 @@
         <!-- [국어·인성 소개 콘텐츠] -->
         <div class="subject-content-panel" data-subject="korean">
           <p class="hero-quote">
-            “생각을 글로 엮고, 온기를 나누며 배움을 확장하는 초등교사”
+            “교실에서 질문하고, 연구로 가능성을 넓히는 교사 / 학생들과 함께 시를 쓰는 마음으로”
           </p>
           <p class="hero-bio">
-            말과 글을 통해 아이들의 마음을 잇고, 전통 고전의 지혜와 디지털 문해력으로 건강한 인성을 가꾸어가는 창의적인 초등교사 나나입니다.
+            말과 글을 통해 아이들의 마음을 잇고, 전통 고전(명심보감)의 지혜를 현대적으로 재해석하여 교실 중심의 따뜻한 인성교육 수업 모형을 실천하는 창의적인 초등교사 나나입니다.
           </p>
         </div>
 
@@ -112,15 +166,26 @@
       </div>
     </section>
 
-    <!-- 2. 나의 교육 철학 -->
+    <!-- 2. 나의 교육 철학 및 학급 일러스트 배너 -->
     <section id="philosophy">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-tag">Philosophy</span>
+          <span class="section-tag">Philosophy & Classroom</span>
           <h2 class="section-title">나의 <span class="gradient-text">교육 철학</span> 💡</h2>
           <p class="section-subtitle">
             교실에서의 작은 호기심이 깊이 있는 사고와 따뜻한 성찰로 이어지도록 돕는 교육적 가치입니다.
           </p>
+        </div>
+
+        <!-- 🏫 학급 일러스트 배너 (따뜻한 감성의 10반 교실) -->
+        <div class="classroom-banner-card reveal">
+          <img src="./class-photo.jpg" alt="따뜻한 감성의 10반 교실 일러스트" class="classroom-banner-img" loading="lazy" onerror="this.onerror=null; this.src='/class-photo.jpg';" />
+          <div class="classroom-banner-caption">
+            <h3>🏫 10반의 온기, 수학교육과 인성교육이 함께 꽃피는 교실</h3>
+            <p>
+              학생들의 엉뚱하고 기발한 수학적 질문이 탐구의 즐거움으로 확장되고, 명심보감의 깊은 지혜가 디지털 언어와 따뜻한 배려의 마음으로 이어지는 교실을 만들어갑니다.
+            </p>
+          </div>
         </div>
 
         <!-- [수학 철학 패널] -->
@@ -173,9 +238,9 @@
 
             <article class="glass-card reveal">
               <div class="card-icon-bubble bubble-purple">💡</div>
-              <h3 class="card-title">기술을 활용한 배움의 확장</h3>
+              <h3 class="card-title">전통 고전(명심보감)의 현대적 재해석 및 인성교육 수업 모형</h3>
               <p class="card-desc">
-                생성형 AI와 디지털 미디어 도구를 비판적으로 수용하고 협력하는 디지털 리터러시를 실천하며, 학생들의 창의적 표현을 확장합니다.
+                명심보감 등 전통 고전의 인성 덕목을 초등학생 눈높이에 맞춘 현대적 수업 콘텐츠로 재구성하고, 교사가 주도적으로 실천하는 공감·배려 중심의 통합 인성교육 수업 모형을 정립합니다.
               </p>
             </article>
           </div>
@@ -269,14 +334,15 @@
 
             <article class="glass-card reveal">
               <div class="card-icon-bubble bubble-mint">💖</div>
-              <h3 class="card-title">사회-정서 학습(SEL)과 전통 고전 인성교육</h3>
+              <h3 class="card-title">사회-정서 학습(SEL)과 전통 고전(명심보감) 인성교육 융합 연구</h3>
               <p class="card-desc">
-                명심보감 등 고전 인성 덕목을 초등 교실에 적합한 현대적 수업 콘텐츠로 재구성하여 공감과 소통 능력을 키우는 통합 인성교육을 연구합니다.
+                명심보감의 고전 인성 가치를 초등 교실에 맞게 재해석하고, 사회-정서 학습(SEL)과 연계하여 교사가 주도하는 지속 가능한 인성교육 수업 모형을 연구합니다.
               </p>
               <div class="research-badge-list">
-                <span class="chip-tag">#사회정서학습</span>
                 <span class="chip-tag">#명심보감</span>
-                <span class="chip-tag">#인성교육</span>
+                <span class="chip-tag">#인성교육수업모형</span>
+                <span class="chip-tag">#현대적재해석</span>
+                <span class="chip-tag">#사회정서학습</span>
               </div>
             </article>
           </div>
@@ -284,7 +350,7 @@
       </div>
     </section>
 
-    <!-- 4. 대학원 수강 과목 섹션 -->
+    <!-- 4. 대학원 수강 과목 섹션 (월·화·목 3개 과목) -->
     <section id="courses">
       <div class="container">
         <div class="section-header reveal">
@@ -336,7 +402,7 @@
               <span class="routine-day-badge badge-thu">목요일 (Thu)</span>
               <span class="routine-term">2026-2 학기</span>
             </div>
-            <h3 class="routine-course-title">'2026-2 AI 기반 언어교육'</h3>
+            <h3 class="routine-course-title">'2026-2 AI 기반 언어교육 및 인성 융합 연구'</h3>
             <p class="routine-desc">
               AI 기반 언어·문해력 지도 연구 및 명심보감 등 전통 고전의 현대적 인성교육 융합 연구, 초등 맞춤형 디지털 인성 자료집 개발
             </p>
@@ -428,14 +494,15 @@
             <article class="glass-card project-card reveal">
               <div class="project-card-top">
                 <span class="project-num">KOREAN PROJECT 01</span>
-                <h3 class="card-title">명심보감 인성 덕목과 디지털 교육과정의 융합</h3>
+                <h3 class="card-title">전통 고전(명심보감)의 현대적 재해석 및 교사 주도 인성교육 수업 모형</h3>
                 <p class="card-desc">
-                  전통 고전의 지혜를 초등 교실에 맞는 현대적 교육 콘텐츠로 재구성하고, 교사 주도의 인성교육 수업 모형 및 자료집 개발 연구를 수행했습니다.
+                  전통 고전 명심보감의 핵심 덕목을 초등학생 발달 단계에 맞춰 현대적 교육 콘텐츠로 재구성하고, 교사가 현장에서 직접 이끄는 체계적인 인성교육 수업 모형 및 실천 워크북을 개발·적용했습니다.
                 </p>
                 <div class="project-tags">
                   <span class="project-tag">#명심보감</span>
-                  <span class="project-tag">#인성교육</span>
-                  <span class="project-tag">#디지털융합</span>
+                  <span class="project-tag">#인성교육수업모형</span>
+                  <span class="project-tag">#현대적재해석</span>
+                  <span class="project-tag">#교사주도연구</span>
                 </div>
               </div>
               <a href="#" class="project-link-btn" onclick="alert('추후 실제 링크로 연결할 수 있습니다.'); return false;">
@@ -486,155 +553,45 @@
       </div>
     </section>
 
-    <!-- 6. '10반 상장 꽃 칸' (월별 탭 & 파스텔 꽃 배지 학생 카드 섹션) -->
+    <!-- 6. '10반 상장 꽃 칸' (LocalStorage 기반 실시간 관리자 모드 연동 섹션) -->
     <section id="flower-board" class="flower-section">
       <div class="container">
         <div class="section-header reveal">
           <span class="section-tag">Classroom Community 🌸</span>
           <h2 class="section-title">우리들의 찬란한 순간, <span class="gradient-text">10반 상장 꽃 칸</span> 🌸</h2>
           <p class="section-subtitle">
-            아이들의 고유한 빛깔과 작은 성장을 꽃피우는 우리 반만의 칭찬 꽃밭입니다. 월별 탭을 눌러 시기별 꽃밭을 확인해보세요!
+            아이들의 고유한 빛깔과 작은 성장을 꽃피우는 우리 반만의 칭찬 꽃밭입니다. 관리자 모드를 통해 언제든 새 꽃 카드를 추가할 수 있습니다!
           </p>
+
+          <!-- 상단 관리자 모드 열기 버튼 -->
+          <div style="margin-top: 18px;">
+            <button class="admin-trigger-btn" id="adminOpenBtn" type="button">
+              <span>⚙️ 10반 관리자 모드 (새 꽃 카드 추가)</span>
+            </button>
+          </div>
         </div>
 
-        <!-- 월별 선택 네온 탭 (전체 모아보기 / 11월의 꽃밭 / 12월의 꽃밭) -->
+        <!-- 월별 선택 네온 탭 (자바스크립트가 카운트를 자동 계산합니다) -->
         <div class="flower-month-selector reveal">
           <div class="flower-month-tabs" role="tablist" aria-label="월별 상장 꽃밭 선택">
             <button class="month-tab-btn active" data-month="all" type="button" role="tab" aria-selected="true">
               <span>✨ 전체 모아보기</span>
-              <span class="count-badge">8</span>
+              <span class="count-badge" id="countAll">8</span>
             </button>
             <button class="month-tab-btn" data-month="nov" type="button" role="tab" aria-selected="false">
               <span>🌸 11월의 꽃밭</span>
-              <span class="count-badge">4</span>
+              <span class="count-badge" id="countNov">4</span>
             </button>
             <button class="month-tab-btn" data-month="dec" type="button" role="tab" aria-selected="false">
               <span>❄️ 12월의 꽃밭</span>
-              <span class="count-badge">4</span>
+              <span class="count-badge" id="countDec">4</span>
             </button>
           </div>
         </div>
 
-        <!-- ==========================================================================
-             🌸 [10반 상장 꽃 칸] 학생 카드 추가 및 수정 안내 가이드
-             ==========================================================================
-             새로운 학생을 추가하거나 상장 내용을 수정하실 때 아래 구조를 복사해 사용하세요.
-
-             [설정 속성 안내]
-             1. data-month: "nov" (11월), "dec" (12월) 등 원하는 월 지정 (추후 새 월 탭 추가 가능)
-             2. 색상 클래스: 아래 파스텔 컬러 중 하나 선택
-                - pastel-sky      (연한 하늘색)
-                - pastel-pink     (연한 핑크색)
-                - pastel-green    (연한 초록/민트색)
-                - pastel-lavender (연한 라벤더 보라색)
-                - pastel-peach    (연한 살구/피치색)
-                - pastel-lemon    (연한 레몬 노란색)
-             3. handleFlowerClick('학생이름'): 클릭 시 축하 팝업에 표시될 학생 이름
-
-             [학생 카드 복사 추가 템플릿]
-             <div class="flower-card pastel-pink reveal" data-month="nov" onclick="handleFlowerClick('홍길동')">
-               <div class="flower-crown">👑</div>
-               <span class="flower-period-badge">11월의 꽃 🌸</span>
-               <h4 class="flower-student-name">홍길동</h4>
-               <span class="flower-award-title">상장 이름 🌷</span>
-               <p class="flower-praise-msg">
-                 학생을 위한 따뜻하고 다정한 칭찬 한 줄 코멘트를 여기에 적어주세요!
-               </p>
-             </div>
-             ========================================================================== -->
-
-        <div class="flower-grid">
-          <!-- ===== 11월의 꽃 카드들 ===== -->
-
-          <!-- 11월 꽃 1 -->
-          <div class="flower-card pastel-sky reveal" data-month="nov" onclick="handleFlowerClick('김민준')">
-            <div class="flower-crown">👑</div>
-            <span class="flower-period-badge">11월의 꽃 🌸</span>
-            <h4 class="flower-student-name">김민준</h4>
-            <span class="flower-award-title">질문 대장상 🌸</span>
-            <p class="flower-praise-msg">
-              언제나 기발하고 깊이 있는 질문으로 교실 배움에 활기를 불어넣는 멋진 탐구자!
-            </p>
-          </div>
-
-          <!-- 11월 꽃 2 -->
-          <div class="flower-card pastel-pink reveal" data-month="nov" onclick="handleFlowerClick('이서연')">
-            <div class="flower-crown">👑</div>
-            <span class="flower-period-badge">11월의 꽃 🌸</span>
-            <h4 class="flower-student-name">이서연</h4>
-            <span class="flower-award-title">고운 말상 🌷</span>
-            <p class="flower-praise-msg">
-              친구들의 마음에 귀 기울이고 다정한 배려의 말을 건네는 우리 반의 따뜻한 배려왕!
-            </p>
-          </div>
-
-          <!-- 11월 꽃 3 -->
-          <div class="flower-card pastel-green reveal" data-month="nov" onclick="handleFlowerClick('박도윤')">
-            <div class="flower-crown">👑</div>
-            <span class="flower-period-badge">11월의 꽃 🌸</span>
-            <h4 class="flower-student-name">박도윤</h4>
-            <span class="flower-award-title">창의 수학상 🌼</span>
-            <p class="flower-praise-msg">
-              어려운 수학 문제 앞에서도 끝까지 포기하지 않고 나만의 방법으로 해결하는 끈기왕!
-            </p>
-          </div>
-
-          <!-- 11월 꽃 4 -->
-          <div class="flower-card pastel-lavender reveal" data-month="nov" onclick="handleFlowerClick('최지우')">
-            <div class="flower-crown">👑</div>
-            <span class="flower-period-badge">11월의 꽃 🌸</span>
-            <h4 class="flower-student-name">최지우</h4>
-            <span class="flower-award-title">마음 시인상 🌺</span>
-            <p class="flower-praise-msg">
-              디지털 시 쓰기 프로젝트에서 섬세하고 따뜻한 감수성으로 모두에게 감동을 준 작가님!
-            </p>
-          </div>
-
-          <!-- ===== 12월의 꽃 카드들 ===== -->
-
-          <!-- 12월 꽃 1 -->
-          <div class="flower-card pastel-peach reveal" data-month="dec" onclick="handleFlowerClick('정예준')">
-            <div class="flower-crown">👑</div>
-            <span class="flower-period-badge">12월의 꽃 ❄️</span>
-            <h4 class="flower-student-name">정예준</h4>
-            <span class="flower-award-title">인성 나눔상 🌻</span>
-            <p class="flower-praise-msg">
-              명심보감 인성 덕목을 교실에서 솔선수범 실천하며 친구들을 묵묵히 돕는 든든한 친구!
-            </p>
-          </div>
-
-          <!-- 12월 꽃 2 -->
-          <div class="flower-card pastel-lemon reveal" data-month="dec" onclick="handleFlowerClick('한채은')">
-            <div class="flower-crown">👑</div>
-            <span class="flower-period-badge">12월의 꽃 ❄️</span>
-            <h4 class="flower-student-name">한채은</h4>
-            <span class="flower-award-title">발표 열정상 🌸</span>
-            <p class="flower-praise-msg">
-              자신의 생각을 조리 있고 당당하게 표현하며 모둠 토론을 훌륭하게 이끄는 리더!
-            </p>
-          </div>
-
-          <!-- 12월 꽃 3 -->
-          <div class="flower-card pastel-sky reveal" data-month="dec" onclick="handleFlowerClick('윤하은')">
-            <div class="flower-crown">👑</div>
-            <span class="flower-period-badge">12월의 꽃 ❄️</span>
-            <h4 class="flower-student-name">윤하은</h4>
-            <span class="flower-award-title">수호천사상 🌷</span>
-            <p class="flower-praise-msg">
-              도움이 필요한 친구 곁으로 먼저 다가가 다정하게 손을 내밀어 주는 천사 같은 마음!
-            </p>
-          </div>
-
-          <!-- 12월 꽃 4 -->
-          <div class="flower-card pastel-green reveal" data-month="dec" onclick="handleFlowerClick('강시우')">
-            <div class="flower-crown">👑</div>
-            <span class="flower-period-badge">12월의 꽃 ❄️</span>
-            <h4 class="flower-student-name">강시우</h4>
-            <span class="flower-award-title">디지털 탐험가상 🌼</span>
-            <p class="flower-praise-msg">
-              AI와 인터랙티브 도구를 창의적으로 다루며 늘 새로운 도전을 즐기는 멋진 개척자!
-            </p>
-          </div>
+        <!-- 🌸 자바스크립트 배열 & LocalStorage에서 자동 렌더링되는 꽃 카드 컨테이너 -->
+        <div class="flower-grid" id="flowerGrid">
+          <!-- 자바스크립트가 자동으로 카드를 생성합니다 -->
         </div>
       </div>
     </section>
@@ -685,77 +642,224 @@
     </div>
   </footer>
 
+  <!-- ⚙️ 우측 하단 플로팅 관리자 모드 버튼 -->
+  <button class="floating-admin-btn" id="floatingAdminBtn" type="button" aria-label="10반 관리자 모드 열기">
+    <span>⚙️</span>
+    <span>10반 관리자 모드</span>
+  </button>
+
+  <!-- ⚙️ 10반 관리자 팝업 모달 (학생 꽃 카드 추가) -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="admin-modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">
+          <span>🌸</span> 10반 상장 꽃 카드 등록
+        </h3>
+        <button class="modal-close-btn" id="modalCloseBtn" type="button" aria-label="닫기">✕</button>
+      </div>
+
+      <form class="modal-form" id="addStudentForm">
+        <div class="form-group">
+          <label class="form-label" for="studentName">학생 이름 *</label>
+          <input type="text" id="studentName" class="form-input" placeholder="예: 이준우" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="awardMonth">수여 월 *</label>
+          <select id="awardMonth" class="form-select" required>
+            <option value="nov">11월의 꽃밭 🌸</option>
+            <option value="dec">12월의 꽃밭 ❄️</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="awardTitle">상장 이름 *</label>
+          <input type="text" id="awardTitle" class="form-input" placeholder="예: 질문 대장상 🌸 / 배려 나눔상 🌷" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="praiseComment">칭찬 한 줄 코멘트 *</label>
+          <textarea id="praiseComment" class="form-textarea" rows="3" placeholder="학생의 멋진 성장과 따뜻한 실천에 대한 칭찬을 적어주세요." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="cardColor">꽃 카드 파스텔 색상</label>
+          <select id="cardColor" class="form-select">
+            <option value="pastel-pink">파스텔 핑크 🌸</option>
+            <option value="pastel-sky">파스텔 하늘 ☁️</option>
+            <option value="pastel-green">파스텔 그린 🌿</option>
+            <option value="pastel-lavender">파스텔 라벤더 💜</option>
+            <option value="pastel-peach">파스텔 피치 🍑</option>
+            <option value="pastel-lemon">파스텔 레몬 🍋</option>
+          </select>
+        </div>
+
+        <div class="modal-buttons">
+          <button type="submit" class="modal-submit-btn">
+            <span>🌸 꽃 카드 추가하기</span>
+          </button>
+          <button type="button" class="modal-reset-btn" id="resetToDefaultBtn" title="기본 8명으로 복원">
+            <span>기본 초기화</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Vite 빌드 및 ES 모듈 스크립트 연결 -->
   <script type="module" src="/src/main.js"></script>
 
   <!-- 브라우저 직접 열기(file://) 호환용 인라인 폴백 스크립트 -->
   <script>
-    function handleFlowerClick(name) {
-      alert(`🌸 10반 [${name}] 학생에게 따뜻한 칭찬과 응원의 마음이 전달되었습니다! ✨`);
-    }
-
     (function () {
-      const btns = document.querySelectorAll('.subject-btn');
-      const panels = document.querySelectorAll('.subject-content-panel');
-      const avatar = document.getElementById('heroAvatar');
-      const tag = document.getElementById('currentSubjectTag');
-      const symbols = document.querySelectorAll('.floating-symbol');
-      const sMap = {
-        math: ['∑', 'π', '∫', '∞', 'f(x)', 'Δ'],
-        korean: ['훈', '글', '말', 'ㄱ', 'ㅎ', '📖']
+      // LocalStorage 및 폴백 데이터 정의
+      const STORAGE_KEY = 'class10_flower_students_v2';
+      const defaultFlowerData = [
+        { name: '김민준', month: 'nov', monthLabel: '11월의 꽃 🌸', award: '질문 대장상 🌸', comment: '언제나 기발하고 깊이 있는 질문으로 교실 배움에 활기를 불어넣는 멋진 탐구자!', color: 'pastel-sky', crown: '👑' },
+        { name: '이서연', month: 'nov', monthLabel: '11월의 꽃 🌸', award: '고운 말상 🌷', comment: '친구들의 마음에 귀 기울이고 다정한 배려의 말을 건네는 우리 반의 따뜻한 배려왕!', color: 'pastel-pink', crown: '👑' },
+        { name: '박도윤', month: 'nov', monthLabel: '11월의 꽃 🌸', award: '창의 수학상 🌼', comment: '어려운 수학 문제 앞에서도 끝까지 포기하지 않고 나만의 방법으로 해결하는 끈기왕!', color: 'pastel-green', crown: '👑' },
+        { name: '최지우', month: 'nov', monthLabel: '11월의 꽃 🌸', award: '마음 시인상 🌺', comment: '디지털 시 쓰기 프로젝트에서 섬세하고 따뜻한 감수성으로 모두에게 감동을 준 작가님!', color: 'pastel-lavender', crown: '👑' },
+        { name: '정예준', month: 'dec', monthLabel: '12월의 꽃 ❄️', award: '인성 나눔상 🌻', comment: '명심보감 인성 덕목을 교실에서 솔선수범 실천하며 친구들을 묵묵히 돕는 든든한 친구!', color: 'pastel-peach', crown: '👑' },
+        { name: '한채은', month: 'dec', monthLabel: '12월의 꽃 ❄️', award: '발표 열정상 🌸', comment: '자신의 생각을 조리 있고 당당하게 표현하며 모둠 토론을 훌륭하게 이끄는 리더!', color: 'pastel-lemon', crown: '👑' },
+        { name: '윤하은', month: 'dec', monthLabel: '12월의 꽃 ❄️', award: '수호천사상 🌷', comment: '도움이 필요한 친구 곁으로 먼저 다가가 다정하게 손을 내밀어 주는 천사 같은 마음!', color: 'pastel-sky', crown: '👑' },
+        { name: '강시우', month: 'dec', monthLabel: '12월의 꽃 ❄️', award: '디지털 탐험가상 🌼', comment: 'AI와 인터랙티브 도구를 창의적으로 다루며 늘 새로운 도전을 즐기는 멋진 개척자!', color: 'pastel-green', crown: '👑' }
+      ];
+
+      window.handleFlowerClick = function(name) {
+        alert(`🌸 10반 [${name}] 학생에게 따뜻한 칭찬과 응원의 마음이 전달되었습니다! ✨`);
       };
 
-      btns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const target = btn.getAttribute('data-target');
-          btns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          panels.forEach(p => {
-            if (p.getAttribute('data-subject') === target) p.classList.add('active');
-            else p.classList.remove('active');
-          });
-          if (avatar) avatar.textContent = target === 'math' ? '📐' : '📚';
-          if (tag) {
-            tag.textContent = target === 'math' ? '수학교육 연구 & 수업 모드 📐' : '국어·인성교육 연구 & 수업 모드 📚';
-            tag.className = target === 'math' ? 'current-subject-indicator indicator-math' : 'current-subject-indicator indicator-korean';
+      // 모듈 스크립트가 실행되지 않는 직접 file:// 열기 환경을 위한 보조 초기화
+      window.addEventListener('load', () => {
+        const grid = document.getElementById('flowerGrid');
+        if (grid && grid.children.length === 0) {
+          let list = [];
+          try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            list = saved ? JSON.parse(saved) : defaultFlowerData;
+          } catch(e) { list = defaultFlowerData; }
+
+          function render(month) {
+            const filtered = month === 'all' ? list : list.filter(s => s.month === month);
+            grid.innerHTML = filtered.map(s => `
+              <div class="flower-card ${s.color} reveal active" data-month="${s.month}" onclick="handleFlowerClick('${s.name}')">
+                <div class="flower-crown">${s.crown || '👑'}</div>
+                <span class="flower-period-badge">${s.monthLabel || (s.month === 'nov' ? '11월의 꽃 🌸' : '12월의 꽃 ❄️')}</span>
+                <h4 class="flower-student-name">${s.name}</h4>
+                <span class="flower-award-title">${s.award}</span>
+                <p class="flower-praise-msg">${s.comment}</p>
+              </div>
+            `).join('');
           }
-          if (sMap[target]) {
-            symbols.forEach((s, i) => {
-              s.textContent = sMap[target][i % sMap[target].length];
+
+          function updateCounts() {
+            const countAll = document.getElementById('countAll');
+            const countNov = document.getElementById('countNov');
+            const countDec = document.getElementById('countDec');
+            if (countAll) countAll.textContent = list.length;
+            if (countNov) countNov.textContent = list.filter(s => s.month === 'nov').length;
+            if (countDec) countDec.textContent = list.filter(s => s.month === 'dec').length;
+          }
+
+          updateCounts();
+          render('all');
+
+          const mBtns = document.querySelectorAll('.month-tab-btn');
+          mBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+              const m = btn.getAttribute('data-month');
+              mBtns.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              render(m);
+            });
+          });
+
+          // 모달 연결 폴백
+          const mBackdrop = document.getElementById('modalBackdrop');
+          const openAdmin = () => mBackdrop && mBackdrop.classList.add('active');
+          const closeAdmin = () => mBackdrop && mBackdrop.classList.remove('active');
+
+          const aBtn = document.getElementById('adminOpenBtn');
+          const fBtn = document.getElementById('floatingAdminBtn');
+          const cBtn = document.getElementById('modalCloseBtn');
+          if (aBtn) aBtn.addEventListener('click', openAdmin);
+          if (fBtn) fBtn.addEventListener('click', openAdmin);
+          if (cBtn) cBtn.addEventListener('click', closeAdmin);
+
+          const form = document.getElementById('addStudentForm');
+          if (form) {
+            form.addEventListener('submit', (e) => {
+              e.preventDefault();
+              const name = document.getElementById('studentName')?.value.trim();
+              const month = document.getElementById('awardMonth')?.value || 'nov';
+              const award = document.getElementById('awardTitle')?.value.trim();
+              const comment = document.getElementById('praiseComment')?.value.trim();
+              const color = document.getElementById('cardColor')?.value || 'pastel-pink';
+              if (!name || !award || !comment) return;
+
+              const item = {
+                name, month,
+                monthLabel: month === 'nov' ? '11월의 꽃 🌸' : '12월의 꽃 ❄️',
+                award, comment, color, crown: '👑'
+              };
+              list.unshift(item);
+              try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch(err){}
+              updateCounts();
+              render('all');
+              form.reset();
+              closeAdmin();
+              alert(`🎉 10반 [${name}] 학생의 상장 꽃 카드가 추가되었습니다!`);
             });
           }
-        });
-      });
 
-      // 월별 꽃밭 필터
-      const mBtns = document.querySelectorAll('.month-tab-btn');
-      const fCards = document.querySelectorAll('.flower-card');
-      mBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const m = btn.getAttribute('data-month');
-          mBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          fCards.forEach(c => {
-            const cm = c.getAttribute('data-month');
-            if (m === 'all' || cm === m) {
-              c.style.display = 'flex';
-              c.style.animation = 'panelFadeIn 0.35s ease forwards';
-            } else {
-              c.style.display = 'none';
-            }
+          // 테마 전환 폴백
+          const tBtn = document.getElementById('themeToggleBtn');
+          if (tBtn) {
+            tBtn.addEventListener('click', () => {
+              const isL = document.body.classList.toggle('light-theme');
+              const tIcon = document.getElementById('themeIcon');
+              const tText = document.getElementById('themeText');
+              if (tIcon) tIcon.textContent = isL ? '🌙' : '☀️';
+              if (tText) tText.textContent = isL ? '네온 다크' : '밝은 화면';
+            });
+          }
+
+          // 과목 탭 전환 폴백
+          const sBtns = document.querySelectorAll('.subject-btn');
+          const sPanels = document.querySelectorAll('.subject-content-panel');
+          const bLeft = document.getElementById('avatarBadgeLeft');
+          const bRight = document.getElementById('avatarBadgeRight');
+          const cTag = document.getElementById('currentSubjectTag');
+          const symbols = document.querySelectorAll('.floating-symbol');
+          const symMap = {
+            math: ['∑', 'π', '∫', '∞', 'f(x)', 'Δ'],
+            korean: ['시', '글', '말', '꽃', '훈', '📖']
+          };
+
+          sBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+              const target = btn.getAttribute('data-target');
+              sBtns.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              sPanels.forEach(p => {
+                if (p.getAttribute('data-subject') === target) p.classList.add('active');
+                else p.classList.remove('active');
+              });
+              if (bLeft) bLeft.textContent = target === 'math' ? '📐' : '📚';
+              if (bRight) bRight.textContent = target === 'math' ? '✨' : '🌸';
+              if (cTag) {
+                cTag.textContent = target === 'math' ? '수학교육 연구 & 수업 모드 📐' : '국어·인성교육 연구 & 수업 모드 📚';
+                cTag.className = target === 'math' ? 'current-subject-indicator indicator-math' : 'current-subject-indicator indicator-korean';
+              }
+              if (symMap[target]) {
+                symbols.forEach((s, idx) => {
+                  s.textContent = symMap[target][idx % symMap[target].length];
+                });
+              }
+            });
           });
-        });
+        }
       });
-
-      const reveals = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        const obs = new IntersectionObserver((entries) => {
-          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        reveals.forEach(r => obs.observe(r));
-      } else {
-        reveals.forEach(r => r.classList.add('active'));
-      }
     })();
   </script>
 </body>
