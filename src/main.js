@@ -1,60 +1,100 @@
-import './style.css'
-import heroImg from './assets/hero.png'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.js'
+import './style.css';
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. 과목 전환 (수학 vs 국어) 탭 기능
+  const subjectBtns = document.querySelectorAll('.subject-btn');
+  const subjectPanels = document.querySelectorAll('.subject-content-panel');
+  const heroAvatar = document.getElementById('heroAvatar');
+  const currentSubjectTag = document.getElementById('currentSubjectTag');
+  const floatingSymbols = document.querySelectorAll('.floating-symbol');
 
-<div class="ticks"></div>
+  const symbolsData = {
+    math: ['∑', 'π', '∫', '∞', 'f(x)', 'Δ'],
+    korean: ['훈', '글', '말', 'ㄱ', 'ㅎ', '📖'],
+  };
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+  subjectBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const targetSubject = btn.getAttribute('data-target');
+      if (!targetSubject) return;
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+      // 탭 활성화 상태 변경
+      subjectBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
 
-setupCounter(document.querySelector('#counter'))
+      // 콘텐츠 패널 전환
+      subjectPanels.forEach((panel) => {
+        if (panel.getAttribute('data-subject') === targetSubject) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+
+      // 아바타 및 태그 변경
+      if (heroAvatar) {
+        heroAvatar.textContent = targetSubject === 'math' ? '📐' : '📚';
+      }
+
+      if (currentSubjectTag) {
+        if (targetSubject === 'math') {
+          currentSubjectTag.textContent = '수학교육 연구 & 수업 모드 📐';
+          currentSubjectTag.className = 'current-subject-indicator indicator-math';
+        } else {
+          currentSubjectTag.textContent = '국어교육 연구 & 수업 모드 📚';
+          currentSubjectTag.className = 'current-subject-indicator indicator-korean';
+        }
+      }
+
+      // 배경 부유 기호 실시간 전환
+      if (symbolsData[targetSubject]) {
+        floatingSymbols.forEach((sym, index) => {
+          sym.style.opacity = '0';
+          setTimeout(() => {
+            sym.textContent = symbolsData[targetSubject][index % symbolsData[targetSubject].length];
+            sym.style.opacity = '0.2';
+          }, 200);
+        });
+      }
+    });
+  });
+
+  // 2. 스크롤 등장 애니메이션 (Intersection Observer)
+  const revealElements = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -30px 0px',
+      }
+    );
+
+    revealElements.forEach((el) => observer.observe(el));
+  } else {
+    revealElements.forEach((el) => el.classList.add('active'));
+  }
+
+  // 3. 부드러운 스크롤 이동
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+          });
+        }
+      }
+    });
+  });
+});

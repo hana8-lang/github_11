@@ -1,13 +1,516 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>github_11</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>김길동 | 창의적인 교육 연구자 자기소개 🚀</title>
+  <!-- 로컬 직접 열기(file://) 및 라이브 서버 호환 지원 -->
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+
+<body>
+  <!-- 화사하고 밝은 배경 요소 (파스텔 오로라 + 좌표/격자 + 부유 기호) -->
+  <div class="background-wrapper" aria-hidden="true">
+    <div class="grid-overlay"></div>
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+
+    <!-- 부유 기호들 (수학/국어 전환 시 동적 변경) -->
+    <div class="floating-symbol symbol-1">∑</div>
+    <div class="floating-symbol symbol-2">π</div>
+    <div class="floating-symbol symbol-3">∫</div>
+    <div class="floating-symbol symbol-4">∞</div>
+    <div class="floating-symbol symbol-5">f(x)</div>
+    <div class="floating-symbol symbol-6">Δ</div>
+  </div>
+
+  <!-- 상단 플로팅 네비게이션 -->
+  <header class="navbar">
+    <nav class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="nav-logo-sparkle">✨</span>
+        <span>김길동의 교육 연구소</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#hero">소개</a></li>
+        <li><a href="#philosophy">교육 철학</a></li>
+        <li><a href="#research">연구 관심사</a></li>
+        <li><a href="#projects">프로젝트</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. 첫 화면 (Hero Section) -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-content">
+        <div class="hero-avatar-wrap">
+          <div class="hero-avatar" id="heroAvatar">📐</div>
+          <span class="hero-badge">수학·국어 융합 & 창의적인 교사</span>
+        </div>
+
+        <h1 class="hero-name">
+          안녕하세요, <span class="gradient-text">김길동</span>입니다! ✨
+        </h1>
+
+        <!-- 과목 선택 네온 토글 스위처 -->
+        <div class="subject-selector-wrapper">
+          <div class="subject-tabs" role="tablist" aria-label="과목 선택">
+            <button class="subject-btn active" data-target="math" type="button" role="tab" aria-selected="true">
+              <span class="sub-icon">📐</span>
+              <span class="sub-text">수학교육</span>
+            </button>
+            <button class="subject-btn" data-target="korean" type="button" role="tab" aria-selected="false">
+              <span class="sub-icon">📚</span>
+              <span class="sub-text">국어교육</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 현재 모드 인디케이터 배지 -->
+        <div>
+          <span id="currentSubjectTag" class="current-subject-indicator indicator-math">
+            수학교육 연구 & 수업 모드 📐
+          </span>
+        </div>
+
+        <!-- [수학 소개 콘텐츠] -->
+        <div class="subject-content-panel active" data-subject="math">
+          <p class="hero-quote">
+            “교실에서 질문하고, 연구로 가능성을 넓히는 창의적인 교사”
+          </p>
+          <p class="hero-bio">
+            수학적 사고와 호기심을 바탕으로 학생들이 스스로 생각하고 발견하는 배움의 즐거움을 연구하며 실천하는 창의적인 교사 김길동입니다.
+          </p>
+        </div>
+
+        <!-- [국어 소개 콘텐츠] -->
+        <div class="subject-content-panel" data-subject="korean">
+          <p class="hero-quote">
+            “생각을 글로 엮고, 대화로 배움을 확장하는 창의적인 교사”
+          </p>
+          <p class="hero-bio">
+            말과 글을 통해 학생들의 마음을 잇고, 깊이 있는 질문과 창의적 표현으로 배움의 지평을 넓혀가는 창의적인 교사 김길동입니다.
+          </p>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#philosophy" class="btn btn-primary">
+            <span>💡 나의 이야기 보기</span>
+          </a>
+          <a href="#projects" class="btn btn-secondary">
+            <span>🚀 연구 및 프로젝트</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 나의 교육 철학 -->
+    <section id="philosophy">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Philosophy</span>
+          <h2 class="section-title">나의 <span class="gradient-text">교육 철학</span> 💡</h2>
+          <p class="section-subtitle">
+            교실에서의 작은 호기심이 깊이 있는 사고와 성찰로 이어지도록 돕는 교육적 가치입니다.
+          </p>
+        </div>
+
+        <!-- [수학 철학 패널] -->
+        <div class="subject-content-panel active" data-subject="math">
+          <div class="cards-grid-3">
+            <article class="glass-card reveal">
+              <div class="card-icon-bubble bubble-pink">💭</div>
+              <h3 class="card-title">학생의 생각에서 출발하는 수업</h3>
+              <p class="card-desc">
+                학생 개개인의 고유한 사고 과정과 질문을 존중합니다. 일방적인 풀이 전달 대신 학생의 오개념과 아이디어를 소중한 배움의 출발점으로 삼습니다.
+              </p>
+            </article>
+
+            <article class="glass-card reveal">
+              <div class="card-icon-bubble bubble-purple">💬</div>
+              <h3 class="card-title">탐구와 대화를 통한 학습</h3>
+              <p class="card-desc">
+                단순한 공식 암기를 넘어 친구들과 함께 질문하고 수학적으로 소통하며, 원리와 규칙을 스스로 발견하고 체계화하도록 돕습니다.
+              </p>
+            </article>
+
+            <article class="glass-card reveal">
+              <div class="card-icon-bubble bubble-cyan">⚡</div>
+              <h3 class="card-title">기술을 활용한 배움의 확장</h3>
+              <p class="card-desc">
+                AI와 인터랙티브 디지털 에드테크 도구를 접목하여 추상적인 수학 개념을 직관적으로 시각화하고, 개별 맞춤형 피드백을 실시간으로 제공합니다.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <!-- [국어 철학 패널] -->
+        <div class="subject-content-panel" data-subject="korean">
+          <div class="cards-grid-3">
+            <article class="glass-card reveal">
+              <div class="card-icon-bubble bubble-orange">📖</div>
+              <h3 class="card-title">학생의 생각에서 출발하는 수업</h3>
+              <p class="card-desc">
+                교과서 텍스트를 넘어 학생 자신의 삶과 경험에서 우러나오는 생각과 표현을 소중히 여기며, 주체적인 읽기와 쓰기의 힘을 기릅니다.
+              </p>
+            </article>
+
+            <article class="glass-card reveal">
+              <div class="card-icon-bubble bubble-pink">💬</div>
+              <h3 class="card-title">탐구와 대화를 통한 학습</h3>
+              <p class="card-desc">
+                텍스트를 함께 읽고 다양한 시선으로 대화하고 토론하며, 서로의 생각에 공감하고 비판적으로 사고하는 따뜻한 언어 공동체를 만듭니다.
+              </p>
+            </article>
+
+            <article class="glass-card reveal">
+              <div class="card-icon-bubble bubble-purple">💡</div>
+              <h3 class="card-title">기술을 활용한 배움의 확장</h3>
+              <p class="card-desc">
+                생성형 AI와 디지털 미디어 도구를 비판적으로 수용하고 협력하는 디지털 리터러시를 실천하며, 학생들의 창의적 표현을 확장합니다.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 주요 연구 관심사 (과목별 탭 연동) -->
+    <section id="research">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Research Interests</span>
+          <h2 class="section-title">주요 <span class="gradient-text">연구 관심사</span> 🔍</h2>
+          <p class="section-subtitle">
+            교실 현장과 미래 교육을 잇는 과목별 핵심 연구 분야입니다.
+          </p>
+        </div>
+
+        <!-- [수학 연구 관심사 패널] -->
+        <div class="subject-content-panel active" data-subject="math">
+          <div class="cards-grid-3">
+            <article class="glass-card reveal">
+              <div class="card-icon-bubble bubble-blue">📚</div>
+              <h3 class="card-title">수학교육과 교사교육</h3>
+              <p class="card-desc">
+                미래 교육 환경 변화에 발맞춘 수학교사의 전문성 신장 방안 및 현장 교실 중심의 수업 설계·수업 성찰 모델을 심층 탐구합니다.
+              </p>
+              <div class="research-badge-list">
+                <span class="chip-tag">#교사전문성</span>
+                <span class="chip-tag">#수업설계</span>
+                <span class="chip-tag">#교사성장</span>
+              </div>
+            </article>
+
+            <article class="glass-card reveal">
+              <div class="card-icon-bubble bubble-cyan">🤖</div>
+              <h3 class="card-title">AI 융합교육 및 디지털 도구 활용 수업</h3>
+              <p class="card-desc">
+                생성형 AI와 동적 기하 소프트웨어(GeoGebra 등)를 교과와 유기적으로 융합하여 학생 중심의 능동적 맞춤형 탐구 학습 모형을 설계하고 적용합니다.
+              </p>
+              <div class="research-badge-list">
+                <span class="chip-tag">#AI융합교육</span>
+                <span class="chip-tag">#생성형AI</span>
+                <span class="chip-tag">#에드테크</span>
+              </div>
+            </article>
+
+            <article class="glass-card reveal">
+              <div class="card-icon-bubble bubble-purple">🧠</div>
+              <h3 class="card-title">학생의 수학적 사고와 학습 과정</h3>
+              <p class="card-desc">
+                수학적 문제 해결 과정에서 나타나는 학생들의 인지적 사고 경로와 오개념 패턴을 분석하여 효과적인 학습 지원 방안을 모색합니다.
+              </p>
+              <div class="research-badge-list">
+                <span class="chip-tag">#수학적사고</span>
+                <span class="chip-tag">#개념형성</span>
+                <span class="chip-tag">#학습분석</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- [국어 연구 관심사 패널] -->
+        <div class="subject-content-panel" data-subject="korean">
+          <div class="cards-grid-3">
+            <article class="glass-card reveal">
+              <div class="card-icon-bubble bubble-orange">📖</div>
+              <h3 class="card-title">초등 문해력 및 어휘 지도</h3>
+              <p class="card-desc">
+                다양한 매체 환경 속에서 학습자의 텍스트 수용 양상을 살피고, 맥락 기반 어휘 지도 전략과 기초·심화 문해력 신장 방안을 연구합니다.
+              </p>
+              <div class="research-badge-list">
+                <span class="chip-tag">#초등문해력</span>
+                <span class="chip-tag">#어휘지도</span>
+                <span class="chip-tag">#읽기교육</span>
+              </div>
+            </article>
+
+            <article class="glass-card reveal">
+              <div class="card-icon-bubble bubble-pink">🤖</div>
+              <h3 class="card-title">AI 기반 작문 활동 및 표현 교육</h3>
+              <p class="card-desc">
+                학생의 글쓰기 발달 단계에 맞춘 AI 문맥 피드백 시스템을 탐색하고, 비판적·창의적 사고를 기르는 과정 중심 작문 수업을 설계합니다.
+              </p>
+              <div class="research-badge-list">
+                <span class="chip-tag">#AI작문</span>
+                <span class="chip-tag">#과정중심쓰기</span>
+                <span class="chip-tag">#디지털리터러시</span>
+              </div>
+            </article>
+
+            <article class="glass-card reveal">
+              <div class="card-icon-bubble bubble-purple">💖</div>
+              <h3 class="card-title">사회-정서 학습(SEL)과 국어 수업</h3>
+              <p class="card-desc">
+                문학과 대화를 매개로 공감과 소통 능력을 키우고, 학생들의 정서적 안정과 자아존중감을 함께 가꾸는 통합적 국어 수업을 연구합니다.
+              </p>
+              <div class="research-badge-list">
+                <span class="chip-tag">#사회정서학습</span>
+                <span class="chip-tag">#공감소통</span>
+                <span class="chip-tag">#인성국어</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 수업 및 연구 프로젝트 -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Projects</span>
+          <h2 class="section-title">수업 및 <span class="gradient-text">연구 프로젝트</span> 🚀</h2>
+          <p class="section-subtitle">
+            교실 실천과 학문적 연구를 연결하는 대표 프로젝트입니다.
+          </p>
+        </div>
+
+        <!-- [수학 프로젝트 패널] -->
+        <div class="subject-content-panel active" data-subject="math">
+          <div class="cards-grid-3">
+            <article class="glass-card project-card reveal">
+              <div class="project-card-top">
+                <span class="project-num">MATH PROJECT 01</span>
+                <h3 class="card-title">AI 융합교육 프로젝트: 생성형 AI 기반 맞춤형 탐구 활동지</h3>
+                <p class="card-desc">
+                  생성형 AI와 수학 교육과정을 유기적으로 융합하여, 학생들의 질문 데이터와 사고 수준에 맞춘 실시간 탐구 힌트와 시각화 피드백을 제공하는 AI 융합 교육 모델 및 활동지를 기획·적용했습니다.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">#AI융합교육</span>
+                  <span class="project-tag">#생성형AI</span>
+                  <span class="project-tag">#맞춤형학습</span>
+                  <span class="project-tag">#에드테크</span>
+                </div>
+              </div>
+              <a href="#" class="project-link-btn" onclick="alert('추후 실제 링크로 연결할 수 있습니다.'); return false;">
+                <span>[프로젝트 아카이브 바로가기 →]</span>
+              </a>
+            </article>
+
+            <article class="glass-card project-card reveal">
+              <div class="project-card-top">
+                <span class="project-num">MATH PROJECT 02</span>
+                <h3 class="card-title">교실 중심 수학적 소통 및 창의 탐구 토론 모델</h3>
+                <p class="card-desc">
+                  수학적 담화와 협력적 문제 해결을 촉진하는 질문 프로토콜을 개발하고, 학생 주도형 수업 실천 사례를 다각도로 분석했습니다.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">#수학담화</span>
+                  <span class="project-tag">#수업연구</span>
+                  <span class="project-tag">#창의토론</span>
+                </div>
+              </div>
+              <a href="#" class="project-link-btn" onclick="alert('추후 실제 링크로 연결할 수 있습니다.'); return false;">
+                <span>[관련 링크 바로가기 →]</span>
+              </a>
+            </article>
+
+            <article class="glass-card project-card reveal">
+              <div class="project-card-top">
+                <span class="project-num">MATH PROJECT 03</span>
+                <h3 class="card-title">인터랙티브 기하 시각화 도구 및 수학 아트</h3>
+                <p class="card-desc">
+                  웹 브라우저에서 직관적으로 도형의 성질과 함수 변화를 직접 조작하며 관찰할 수 있는 학생 참여형 시각화 도구를 제작했습니다.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">#시각화도구</span>
+                  <span class="project-tag">#GeoGebra</span>
+                  <span class="project-tag">#인터랙션</span>
+                </div>
+              </div>
+              <a href="#" class="project-link-btn" onclick="alert('추후 실제 링크로 연결할 수 있습니다.'); return false;">
+                <span>[관련 링크 바로가기 →]</span>
+              </a>
+            </article>
+          </div>
+        </div>
+
+        <!-- [국어 프로젝트 패널] -->
+        <div class="subject-content-panel" data-subject="korean">
+          <div class="cards-grid-3">
+            <!-- 사용자 요청 명심보감 프로젝트 완벽 반영 -->
+            <article class="glass-card project-card reveal">
+              <div class="project-card-top">
+                <span class="project-num">KOREAN PROJECT 01</span>
+                <h3 class="card-title">명심보감 인성 덕목과 디지털 교육과정의 융합</h3>
+                <p class="card-desc">
+                  전통 고전의 지혜를 초등 교실에 맞는 현대적 교육 콘텐츠로 재구성하고, 교사 주도의 인성교육 수업 모형 및 자료집 개발 연구를 수행했습니다.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">#명심보감</span>
+                  <span class="project-tag">#인성교육</span>
+                  <span class="project-tag">#디지털융합</span>
+                </div>
+              </div>
+              <a href="#" class="project-link-btn" onclick="alert('추후 실제 링크로 연결할 수 있습니다.'); return false;">
+                <span>[자료집 & 연구 링크 →]</span>
+              </a>
+            </article>
+
+            <!-- 사용자 요청 시 쓰기 프로젝트 완벽 반영 -->
+            <article class="glass-card project-card reveal">
+              <div class="project-card-top">
+                <span class="project-num">KOREAN PROJECT 02</span>
+                <h3 class="card-title">감성을 깨우는 디지털 시 쓰기 & 창의 표현 프로젝트</h3>
+                <p class="card-desc">
+                  일상의 감정과 경험을 시적 언어로 표현하고, 디지털 미디어 아트 및 오디오 낭독북으로 함께 엮어내는 학생 참여형 창의 표현 글쓰기를 실천했습니다.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">#시쓰기</span>
+                  <span class="project-tag">#창의표현</span>
+                  <span class="project-tag">#감성문해력</span>
+                </div>
+              </div>
+              <a href="#" class="project-link-btn" onclick="alert('추후 실제 링크로 연결할 수 있습니다.'); return false;">
+                <span>[시집 아카이브 바로가기 →]</span>
+              </a>
+            </article>
+
+            <!-- 국어 프로젝트 3: AI 융합 국어 프로젝트 -->
+            <article class="glass-card project-card reveal">
+              <div class="project-card-top">
+                <span class="project-num">KOREAN PROJECT 03</span>
+                <h3 class="card-title">AI 융합 국어 프로젝트: 생성형 AI 협업 작문 및 비판적 리터러시</h3>
+                <p class="card-desc">
+                  생성형 AI를 글쓰기 사고 파트너로 활용하여 질문 생성, 개요 작성, 맥락 피드백을 함께 수행하고, AI의 산출물을 비판적으로 검토하는 AI 융합 교육 모델을 실천했습니다.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">#AI융합교육</span>
+                  <span class="project-tag">#생성형AI</span>
+                  <span class="project-tag">#디지털리터러시</span>
+                  <span class="project-tag">#과정중심쓰기</span>
+                </div>
+              </div>
+              <a href="#" class="project-link-btn" onclick="alert('추후 실제 링크로 연결할 수 있습니다.'); return false;">
+                <span>[AI 작문 수업 자료 →]</span>
+              </a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 연락처 및 링크 -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box reveal">
+          <span class="section-tag">Get in Touch</span>
+          <h2 class="section-title">김길동과 함께 <span class="gradient-text">소통해요</span> 💌</h2>
+          <p class="contact-msg">
+            궁금한 점이 있거나 새로운 수업 및 융합 연구 협업을 제안하고 싶으시다면 언제든 편하게 연락해 주세요!
+          </p>
+
+          <div class="contact-links-grid">
+            <a href="mailto:kimgildong@example.com" class="contact-item">
+              <span class="contact-icon">📧</span>
+              <div class="contact-info">
+                <span class="contact-label">Email</span>
+                <span class="contact-val">[kimgildong@example.com]</span>
+              </div>
+            </a>
+
+            <a href="#" class="contact-item" onclick="alert('디지털 아카이브 링크로 연결할 수 있습니다.'); return false;">
+              <span class="contact-icon">🗂️</span>
+              <div class="contact-info">
+                <span class="contact-label">Digital Archive</span>
+                <span class="contact-val">[디지털 아카이브 / 포트폴리오]</span>
+              </div>
+            </a>
+
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <span class="contact-icon">💻</span>
+              <div class="contact-info">
+                <span class="contact-label">GitHub</span>
+                <span class="contact-val">[github.com/kimgildong]</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 김길동 | 수학·국어 융합 연구자 & 창의적인 교사. Together for better education ✨</p>
+    </div>
+  </footer>
+
+  <!-- Vite 빌드 및 ES 모듈 스크립트 연결 -->
+  <script type="module" src="/src/main.js"></script>
+
+  <!-- 브라우저 직접 열기(file://) 호환용 인라인 폴백 스크립트 -->
+  <script>
+    (function () {
+      const btns = document.querySelectorAll('.subject-btn');
+      const panels = document.querySelectorAll('.subject-content-panel');
+      const avatar = document.getElementById('heroAvatar');
+      const tag = document.getElementById('currentSubjectTag');
+      const symbols = document.querySelectorAll('.floating-symbol');
+      const sMap = {
+        math: ['∑', 'π', '∫', '∞', 'f(x)', 'Δ'],
+        korean: ['훈', '글', '말', 'ㄱ', 'ㅎ', '📖']
+      };
+
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-target');
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          panels.forEach(p => {
+            if (p.getAttribute('data-subject') === target) p.classList.add('active');
+            else p.classList.remove('active');
+          });
+          if (avatar) avatar.textContent = target === 'math' ? '📐' : '📚';
+          if (tag) {
+            tag.textContent = target === 'math' ? '수학교육 연구 & 수업 모드 📐' : '국어교육 연구 & 수업 모드 📚';
+            tag.className = target === 'math' ? 'current-subject-indicator indicator-math' : 'current-subject-indicator indicator-korean';
+          }
+          if (sMap[target]) {
+            symbols.forEach((s, i) => {
+              s.textContent = sMap[target][i % sMap[target].length];
+            });
+          }
+        });
+      });
+
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        reveals.forEach(r => obs.observe(r));
+      } else {
+        reveals.forEach(r => r.classList.add('active'));
+      }
+    })();
+  </script>
+</body>
+
 </html>
