@@ -1,7 +1,7 @@
 import './style.css';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. 과목 전환 (수학 vs 국어) 탭 기능
+  // 1. 과목 전환 (수학 vs 국어·인성) 탭 기능
   const subjectBtns = document.querySelectorAll('.subject-btn');
   const subjectPanels = document.querySelectorAll('.subject-content-panel');
   const heroAvatar = document.getElementById('heroAvatar');
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
           currentSubjectTag.textContent = '수학교육 연구 & 수업 모드 📐';
           currentSubjectTag.className = 'current-subject-indicator indicator-math';
         } else {
-          currentSubjectTag.textContent = '국어교육 연구 & 수업 모드 📚';
+          currentSubjectTag.textContent = '국어·인성교육 연구 & 수업 모드 📚';
           currentSubjectTag.className = 'current-subject-indicator indicator-korean';
         }
       }
@@ -52,14 +52,41 @@ document.addEventListener('DOMContentLoaded', () => {
           sym.style.opacity = '0';
           setTimeout(() => {
             sym.textContent = symbolsData[targetSubject][index % symbolsData[targetSubject].length];
-            sym.style.opacity = '0.2';
+            sym.style.opacity = '0.22';
           }, 200);
         });
       }
     });
   });
 
-  // 2. 스크롤 등장 애니메이션 (Intersection Observer)
+  // 2. 10반 상장 꽃 칸 월별 필터 탭 기능
+  const monthBtns = document.querySelectorAll('.month-tab-btn');
+  const flowerCards = document.querySelectorAll('.flower-card');
+
+  monthBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selectedMonth = btn.getAttribute('data-month');
+      monthBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      flowerCards.forEach((card) => {
+        const cardMonth = card.getAttribute('data-month');
+        if (selectedMonth === 'all' || cardMonth === selectedMonth) {
+          card.style.display = 'flex';
+          card.style.animation = 'panelFadeIn 0.35s ease forwards';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // 3. 10반 상장 꽃 칸 클릭 인터랙션
+  window.handleFlowerClick = function(name) {
+    alert(`🌸 10반 [${name}] 학생에게 따뜻한 칭찬과 응원의 마음이 전달되었습니다! ✨`);
+  };
+
+  // 4. 스크롤 등장 애니메이션 (Intersection Observer)
   const revealElements = document.querySelectorAll('.reveal');
 
   if ('IntersectionObserver' in window) {
@@ -72,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       },
       {
-        threshold: 0.12,
+        threshold: 0.1,
         rootMargin: '0px 0px -30px 0px',
       }
     );
@@ -82,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach((el) => el.classList.add('active'));
   }
 
-  // 3. 부드러운 스크롤 이동
+  // 4. 부드러운 앵커 스크롤 이동
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
